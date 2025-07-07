@@ -1,18 +1,47 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <form id="form">
+<body class="d-flex align-items-center bg-body-tertiary flex-column">
+    
+    <main class="w-100 m-auto form-container d-flex align-items-center py-4 bg-body-tertiary flex-column">
+    <h2 class="h1 mb-3 fw-normal"><span class="badge text-bg-secondary">API com Node.js, Express e MongoDb</span></h2>
+    <form id="form" class="form-floating w-100 bg-dark py-4 px-4 border">
+    <h3 class="h3 mb-3 fw-normal">Cadastre um item</h3>
+        <div class="col-md-12">
         <label for="item">Item</label>
-        <input type="text" id="item" name="item">
-        <label for="valor">Valor</label>
-        <input type="number" id="valor" name="valor">
-        <button type="submit">Enviar</button>
+        <input type="text" id="item" name="item" class="form-control my-2" placeholder="Digite o nome do item">
+        </div>
+        <div class="col-md-12">
+        <label for="valor" class="class="form-control"">Valor</label>
+        <input type="number" id="valor" name="valor" class="form-control my-2" step="0.01"   placeholder="Digite o valor do item">
+        </div>
+        <div class="col-12">
+        <button type="submit" class="btn btn-secondary w-100 py-2 my-4">Enviar</button>
+        </div>
     </form>
-    <script src="validarForm.js"></script>
+   
+    <table class="table table-striped border table-hover" id="table-content">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Item</th>
+      <th scope="col">Valor</th>
+
+    </tr>
+  </thead>
+  <tbody id="table-body" >
+  
+    </tbody>
+    </table>
+    </main>
+    <script type="module" src="validarForm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script type="module" src="carregarItens.js"></script>
 </body>
 </html>

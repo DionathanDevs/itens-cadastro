@@ -1,0 +1,21 @@
+.form-container{
+    max-width: 800px;
+    padding: 1rem;
+
+}
+
+main{
+    height: 100vh;
+    gap: 1em;
+}
+html, body{
+    height: 100%;
+}
+
+.alert{
+    z-index: 1050; width: 100%; max-width: 500px; margin-top: 10px;
+    transition: 3s;
+}
+
+
+

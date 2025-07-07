@@ -1,3 +1,5 @@
+import { carregarItens } from './carregarItens.js';
+
 // armazenando os elementos da pagina index.
 
 const form = document.getElementById('form')
@@ -12,6 +14,7 @@ e.preventDefault();
 const item = inputItem.value.trim();
 const valor = inputValor.value.trim();
 
+
 //validando o preenchimento do input, verdadeiro se preenchido, falso se não preenchido.
 function validarItem(){
     return item != '';
@@ -25,14 +28,38 @@ function validarValor(){
 try{
 //se a condicional for falsa, retorna no console para testes.
 if(!validarItem()){
-    console.log("Preencha o item!")
+const cardWarningItem = document.createElement('div');
+  cardWarningItem.className = "alert alert-warning position-fixed top-0 start-50 translate-middle-x shadow";
+  cardWarningItem.innerHTML = "<p class='mb-0 text-center'>Preencha o item!</p>";
+
+  // Adiciona no body
+  document.body.appendChild(cardWarningItem);
+
+  // Remove após 3 segundos
+  setTimeout(() => {
+    cardWarningItem.remove();
+  }, 3000);
     inputItem.value = '';
     return;
 }else if(!validarValor()){
 //se a condicional for falsa, retorna no console para testes.
-    console.log("Preencha o valor!")
+    const cardWarningValor = document.createElement('div');
+ 
+    cardWarningValor.className = "alert alert-warning position-fixed top-0 start-50 translate-middle-x shadow";
+
+    cardWarningValor.innerHTML = "<p class='mb-0 text-center'>Preencha o valor!</p>";
+
+  // Adiciona no body
+    document.body.appendChild(cardWarningValor);
+
+  // Remove após 3 segundos
+    setTimeout(() => {
+    cardWarningValor.remove();
+    }, 3000);
+
     inputValor.value = '';
     return;
+
 }else{
     console.log("Itens preenchidos!")
 }
@@ -53,9 +80,30 @@ const response = await fetch("http://localhost:3000/vendas", {
       "Content-Type": "application/json" // diz que estamos enviando JSON
     },
     body: JSON.stringify(dadosEnvio)
-})
+    
+}
+)
+
+
+
+
+  const cardSucess = document.createElement('div');
+  cardSucess.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x shadow";
+
+  cardSucess.innerHTML = "<p class='mb-0 text-center'>Item cadastrado com sucesso!</p>";
+
+  // Adiciona no body
+  document.body.appendChild(cardSucess);
+
+  // Remove após 3 segundos
+  setTimeout(() => {
+    cardSucess.remove();
+  }, 3000);
+
 
 const data = await response.json()
+
+carregarItens();
 console.log("Resposta da API:", data)
 
 inputItem.value = '';
